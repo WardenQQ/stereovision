@@ -28,13 +28,21 @@ public class DisparityMap implements GrayScale {
         }
     }
 
-    private int getDisparity(int x, int y) {
+    public int getDisparity(int x, int y) {
         return disparityMap[x + y * width];
     }
 
     private void setDisparity(int x, int y, int value) {
         disparityMap[x + y * width] = value;
         maximalDisparity = value > maximalDisparity ? value : maximalDisparity;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 
     @Override
