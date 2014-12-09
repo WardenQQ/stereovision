@@ -23,6 +23,6 @@ public class SumAbsoluteDifferences extends MatchingAlgorithmTemplate {
 
     @Override
     public boolean isBetterScore(double newScore, double bestScore) {
-        return newScore <= bestScore;
+        return newScore < bestScore;
     }
 }
