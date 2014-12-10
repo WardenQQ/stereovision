@@ -4,6 +4,8 @@ import util.Point2D;
 import image.IntensityMap;
 
 public abstract class MatchingAlgorithmTemplate {
+    public abstract double getWorstScore();
+
     public abstract double computeScore(Point2D origin, int disparity, IntensityMap left, IntensityMap right, int windowSize);
 
     public abstract boolean isBetterScore(double newScore, double bestScore);

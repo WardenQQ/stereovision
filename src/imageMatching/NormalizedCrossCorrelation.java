@@ -5,7 +5,8 @@ import image.IntensityMap;
 import util.Point2D;
 
 public class NormalizedCrossCorrelation extends MatchingAlgorithmTemplate {
-    public static final double WORST_SCORE = -1.0;
+    public static final double WORST_SCORE = -Double.MAX_VALUE;//Double.NEGATIVE_INFINITY;
+
     private double computeArithmeticMean(Point2D origin, IntensityMap intensity, int windowSize) {
         double sum = 0.0;
 
@@ -29,6 +30,11 @@ public class NormalizedCrossCorrelation extends MatchingAlgorithmTemplate {
         }
 
         return Math.sqrt(sum);
+    }
+
+    @Override
+    public double getWorstScore() {
+        return WORST_SCORE;
     }
 
     @Override

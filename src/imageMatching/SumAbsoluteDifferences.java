@@ -4,6 +4,8 @@ import image.IntensityMap;
 import util.Point2D;
 
 public class SumAbsoluteDifferences extends MatchingAlgorithmTemplate {
+    public static final double WORST_SCORE = 1.0;
+
     @Override
     public double computeScore(Point2D origin, int disparity, IntensityMap left, IntensityMap right, int windowSize) {
         double score = 0.0;
@@ -19,6 +21,11 @@ public class SumAbsoluteDifferences extends MatchingAlgorithmTemplate {
         score /= (windowSize * windowSize);
 
         return score;
+    }
+
+    @Override
+    public double getWorstScore() {
+        return WORST_SCORE;
     }
 
     @Override
