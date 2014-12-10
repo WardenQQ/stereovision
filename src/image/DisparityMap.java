@@ -11,9 +11,10 @@ public class DisparityMap implements GrayScale {
     private final int height;
     private int maximalDisparity;
 
-    public DisparityMap(IntensityMap leftImageIntensity, IntensityMap rightImageIntensity, int windowSize, int numberDisparity, double threshold, MatchingAlgorithmTemplate matchingAlgorithm) {
+    public DisparityMap(IntensityMap leftImageIntensity, IntensityMap rightImageIntensity, int windowSize, int numberDisparity, MatchingAlgorithmTemplate matchingAlgorithm) {
         this.width = leftImageIntensity.getWidth();
         this.height = leftImageIntensity.getHeight();
+        double threshold = matchingAlgorithm.getWorstScore();
 
         disparityMap = new int[width * height];
 
@@ -51,7 +52,11 @@ public class DisparityMap implements GrayScale {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                int grayLevel = (255 * getDisparity(x, y)) / maximalDisparity;
+                int grayLevel = 0;
+                if (maximalDisparity != 0) {
+                    grayLevel = (255 * getDisparity(x, y)) / maximalDisparity;
+                }
+
                 int rgb = 0xff000000 | grayLevel << 16 | grayLevel << 8 | grayLevel;
 
                 image.setRGB(x, y, rgb);

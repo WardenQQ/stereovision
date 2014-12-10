@@ -16,10 +16,8 @@ import java.awt.image.BufferedImage;
 public class main {
     public static void main(String[] args) {
         try {
-            //BufferedImage leftImage = ImageIO.read(new File("./image/imL.png"));
-            //BufferedImage rightImage = ImageIO.read(new File("./image/imR.png"));
-            BufferedImage leftImage = ImageIO.read(new File("./vaseL.png"));
-            BufferedImage rightImage = ImageIO.read(new File("./vaseR.png"));
+            BufferedImage leftImage = ImageIO.read(new File("./image/vaseL.png"));
+            BufferedImage rightImage = ImageIO.read(new File("./image/vaseR.png"));
 
             IntensityMap leftIntensity = new IntensityMap(leftImage, new HsiIntensity());
             IntensityMap rightIntensity = new IntensityMap(rightImage, new HsiIntensity());
@@ -27,9 +25,8 @@ public class main {
             DisparityMap disparityMap = new DisparityMap(
                     leftIntensity,
                     rightIntensity,
-                    9,
-                    100,
-                    NormalizedCrossCorrelation.WORST_SCORE,
+                    20,
+                    500,
                     new NormalizedCrossCorrelation()
             );
 
