@@ -46,6 +46,10 @@ public class DisparityMap implements GrayScale {
         return height;
     }
 
+    public int getMaximalDisparity() {
+        return maximalDisparity;
+    }
+
     @Override
     public BufferedImage createGrayScaleImage() {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
